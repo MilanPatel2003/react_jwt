@@ -1,7 +1,11 @@
+import { Heading } from "../components/Heading";
+
 export default function Home() {
 
 
     return (
-        <div><p className=" bg-blue-700">Home public </p></div>
+        <div>
+            <Heading headingText="THIS IS PUBLIC PAGE"></Heading>
+        </div>
     );
 } 
