@@ -5,30 +5,27 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 interface Email {
-  email:string
+  email: string;
 }
 
 export const Forgetpass = () => {
-  const [email,setEmail] = useState("")
+  const [email, setEmail] = useState("");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const handleSubmit = async (e:any) =>{
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const formData : Email = {
-      email
-    }
+    const formData: Email = {
+      email,
+    };
     try {
-      const res = await API.post<any>("/auth/generatetoken",formData)
-    setEmail(res.data.emailToken);
-    navigate("/changepass")
-    
-    } catch (error:any) {
-      toast.error(error.response?.data?.message)
+      const res = await API.post<any>("/auth/generatetoken", formData);
+      localStorage.setItem("emailToken", res.data.emailToken);
+      navigate("/changepass");
+    } catch (error: any) {
+      toast.error(error.response?.data?.message);
     }
-    
-    
-  }
+  };
 
   return (
     <div className="flex items-center justify-center bg-gray-50 p-4">
@@ -59,10 +56,10 @@ export const Forgetpass = () => {
           <tr>
             <td align="center" colSpan={2}>
               <button
-              onClick={handleSubmit}
-              className="border cursor-pointer rounded-sm p-1.5 bg-blue-300 text-center hover:text-amber-50"
+                onClick={handleSubmit}
+                className="border cursor-pointer rounded-sm p-1.5 bg-blue-300 text-center hover:text-amber-50"
               >
-              Submit
+                Submit
               </button>
             </td>
           </tr>

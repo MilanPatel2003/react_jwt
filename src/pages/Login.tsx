@@ -59,6 +59,7 @@ export default function Login() {
       localStorage.setItem("token", res.data.accessToken);
       window.location.href = "/";
     } catch (error: any) {
+      generateCaptcha()
       const msg = error?.response?.data?.message || "server error";
       toast.error(msg);
     }
