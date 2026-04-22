@@ -3,6 +3,7 @@ import { Heading } from "../components/Heading";
 import API from "../lib/api";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 interface SignInBody {
   email: string;
